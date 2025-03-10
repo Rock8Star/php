@@ -1,20 +1,8 @@
 <?php
-
-function calculate_age($dob) {
-    $dob_date = new DateTime($dob); // Convert DOB to DateTime object
-    $today = new DateTime(); // Get today's date
-    $age = $today->diff($dob_date)->y; // Get the difference in years (age)
-    return $age;
-}
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the date of birth input from the form
-    $dob = $_POST['dob'];
-
-    $age = calculate_age($dob);
-
     
+    $age = $_POST['age'];
+
     if ($age >= 18) {
         echo "<h2>You are $age years old. You are eligible!</h2>";
     } else {
@@ -33,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h1>Check if You Are 18 or Older</h1>
 
 <form method="POST" action="">
-    <label for="dob">Enter Your Date of Birth: </label>
-    <input type="date" id="dob" name="dob" required>
+    <label for="age">Enter Your Age: </label>
+    <input type="number" id="age" name="age" required>
     <br><br>
     <input type="submit" value="Check Age">
 </form>
